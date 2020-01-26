@@ -60,7 +60,9 @@ public class MainWindow extends JFrame
 		JPanel mid = new JPanel();
 		mid.setLayout(new GridBagLayout());
 
-
+		JPanel bot = new JPanel();
+		bot.setLayout(new GridBagLayout());
+		
 		JPanel status = new JPanel();
 		status.setLayout(new GridBagLayout());
 
@@ -137,7 +139,8 @@ public class MainWindow extends JFrame
 					r_subject.add(subjectText.getText());
 					r_courseNumber.add(courseText.getText());
 					r_sectionNumber.add(sectionText.getText());
-					r_link.add(link.getText());
+					r_link.add(selectedFile.getAbsolutePath());
+					
 					
 					}
 				}
@@ -153,42 +156,28 @@ public class MainWindow extends JFrame
 		//==============================
 		GridBagConstraints botPanel = new GridBagConstraints();
 		botPanel.anchor = GridBagConstraints.CENTER;
-		botPanel.insets = new Insets(1,2,0,0);
+		botPanel.insets = new Insets(1,1,0,0);
 		botPanel.gridx = 1;
-		botPanel.gridy = 2;
+		botPanel.gridy = 1;
 
 		JButton Finish = new JButton("Generate Super Syllabus");
 		Finish.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
-			JFileChooser jfc = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
-
-			int returnValue = jfc.showOpenDialog(null);
-
-			if (returnValue == JFileChooser.APPROVE_OPTION) {
-				File selectedFile = jfc.getSelectedFile();
-				link.setText(selectedFile.getAbsolutePath());
-				System.out.println(selectedFile.getAbsolutePath());	
-				}
+			mainBox.dispose();
 			}
 			});		
-
-		JButton generatePrimes = new JButton("Generate Primes");
-		generatePrimes.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				lblStatus.setText("Generating Primes.");
-			}
-	    });
 		
-
+		bot.add(Finish,botPanel);
 		//STATUS PANEL
 		//================================================
 		GridBagConstraints statusPanel = new GridBagConstraints();
 		statusPanel.anchor = GridBagConstraints.WEST;
 		statusPanel.weightx = .5;
 		statusPanel.insets = new Insets(1,2,0,0);
-		statusPanel.gridx = 0;
-		statusPanel.gridy = 2;
-
+		statusPanel.gridx = 1;
+		statusPanel.gridy = 1;
+		
+		
 		lblStatus = new JLabel("Keep Loading All Your Syllabi");
 		status.add(lblStatus,statusPanel);
 
@@ -196,9 +185,9 @@ public class MainWindow extends JFrame
 		main.gridy = 1;
 		mainBox.add(mid,main);
 		main.gridy = 2;
+		mainBox.add(bot,main);
+		main.gridy = 3;
 		mainBox.add(status,main);
-
-
 		mainBox.setSize(new Dimension(1000,400));
 		mainBox.pack(); // Knowing what this is and why it is needed is important. You should read the documentation on this function!
 		mainBox.setVisible(true);
