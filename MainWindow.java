@@ -35,12 +35,12 @@ public class MainWindow extends JFrame
 	private JLabel sectionText;
 	private JLabel lblStatus;
 	private JTextField link;
-	
+
 	private ArrayList<String> r_subject;
 	private ArrayList<String> r_courseNumber;
 	private ArrayList<String> r_sectionNumber;
 	private ArrayList<String> r_link;
-	
+
 	// Main window Constructs the main GUI
 	MainWindow()
 	{
@@ -62,7 +62,7 @@ public class MainWindow extends JFrame
 
 		JPanel bot = new JPanel();
 		bot.setLayout(new GridBagLayout());
-		
+
 		JPanel status = new JPanel();
 		status.setLayout(new GridBagLayout());
 
@@ -83,7 +83,7 @@ public class MainWindow extends JFrame
 		topPanel.gridy = 1;
 		topPanel.gridwidth = 1;
 		top.add(subjectText, topPanel);
-		
+
 		subject = new JTextField("CSCE");
 		subject.setColumns(20);
 		topPanel.gridx = 1;
@@ -94,24 +94,24 @@ public class MainWindow extends JFrame
 		topPanel.gridx = 2;
 		topPanel.gridy = 1;
 		top.add(courseText,topPanel);
-		
+
 		courseNumber = new JTextField("121");
 		courseNumber.setColumns(20);
 		topPanel.gridx = 2;
 		topPanel.gridy = 2;
 		top.add(courseNumber, topPanel);
-		
+
 		sectionText = new JLabel("Enter your section number.");
 		topPanel.gridx = 3;
 		topPanel.gridy = 1;
 		top.add(sectionText,topPanel);
-		
+
 		sectionNumber = new JTextField("507");
 		sectionNumber.setColumns(20);
 		topPanel.gridx = 3;
 		topPanel.gridy = 2;
 		top.add(sectionNumber,topPanel);
-		
+
 
 
 
@@ -134,23 +134,23 @@ public class MainWindow extends JFrame
 				if (returnValue == JFileChooser.APPROVE_OPTION) {
 					File selectedFile = jfc.getSelectedFile();
 					link.setText(selectedFile.getAbsolutePath());
-					System.out.println(selectedFile.getAbsolutePath());	
-					
+					System.out.println(selectedFile.getAbsolutePath());
+
 					r_subject.add(subjectText.getText());
 					r_courseNumber.add(courseText.getText());
 					r_sectionNumber.add(sectionText.getText());
 					r_link.add(selectedFile.getAbsolutePath());
-					
-					
+
+
 					}
 				}
-				});		
+				});
 		mid.add(fileLoad,midPanel);
 		midPanel.gridx = 2;
 		link = new JTextField("None Selected");
 		link.setColumns(60);
 		mid.add(link,midPanel);
-			
+
 
 		// BOT PANEL
 		//==============================
@@ -165,8 +165,8 @@ public class MainWindow extends JFrame
 		public void actionPerformed(ActionEvent e) {
 			mainBox.dispose();
 			}
-			});		
-		
+			});
+
 		bot.add(Finish,botPanel);
 		//STATUS PANEL
 		//================================================
@@ -176,8 +176,8 @@ public class MainWindow extends JFrame
 		statusPanel.insets = new Insets(1,2,0,0);
 		statusPanel.gridx = 1;
 		statusPanel.gridy = 1;
-		
-		
+
+
 		lblStatus = new JLabel("Keep Loading All Your Syllabi");
 		status.add(lblStatus,statusPanel);
 
@@ -191,14 +191,14 @@ public class MainWindow extends JFrame
 		mainBox.setSize(new Dimension(1000,400));
 		mainBox.pack(); // Knowing what this is and why it is needed is important. You should read the documentation on this function!
 		mainBox.setVisible(true);
-		
+
 	}
 
 
 	// This function updates all the GUI statistics. (# of primes, # of crosses, etc)
 //	private void updateStats()
 //	{
-//		
+//
 // 	}
 	public ArrayList<String> getSubjects()
 	{
